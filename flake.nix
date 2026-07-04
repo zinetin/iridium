@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, hyprland, ... };
+  outputs = { self, nixpkgs, hyprland, ... }:
   let
     forAllSystems = nixpkgs.lib.genAttrs [
       "x86_64-linux"
