@@ -1,4 +1,4 @@
-{config, lib, ...}:
+{config, inputs, lib, ...}:
 
 let
   cfg = config.programs.iridium;
@@ -13,22 +13,22 @@ in
 
       extraLuaFiles = {
         "default.keybinds" = {
-          content = ./keybinds.lua;
+          content = ./config/keybinds.lua;
           autoLoad = true;
         };
 
         "default.general" = {
-          content = ./general.lua;
+          content = ./config/general.lua;
           autoLoad = true;
         };
 
         "default.env" = {
-          content = ./env.lua;
+          content = ./config/env.lua;
           autoLoad = true;
         };
 
         "default.execs" = {
-          content = ./execs.lua;
+          content = ./config/execs.lua;
           autoLoad = true;
         };
 
