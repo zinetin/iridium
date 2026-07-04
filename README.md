@@ -2,7 +2,8 @@
 Nixos module for my hyprland and quickshell dotfiles.
 
 # installation
-*WARNING*
+**WARNING**
+
 This flake assumes that both the .config/hypr and .config/quickshell directories are empty.
 It is untested as to what happens if the directories are not empty, but it could lead to a loss of configuration.
 
