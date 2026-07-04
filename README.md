@@ -1,5 +1,5 @@
 # iridium
-Nixos module for my hyprland and quickshell dotfiles.
+A Hyprland and Quickshell configuration made for NixOS focused on usability.
 
 # Installation
 ## **WARNING**
