@@ -11,7 +11,7 @@ It is untested as to what happens if the directories are not empty, but it could
 
 1. Add iridium to your flake.nix inputs
 
-```
+```flake.nix
 inputs = {
   iridium = {
     url = "github:zinetin/iridium";
@@ -22,7 +22,7 @@ inputs = {
 
 2. Add iridium to your outputs, and add the iridium module to your modules
 
-```
+```flake.nix
 outputs = {your-current-outputs, iridium, ...} @inputs: {
   nixosConfigurations.my-system = nixpkgs.lib.nixosSystem {
     modules = [
@@ -34,10 +34,12 @@ outputs = {your-current-outputs, iridium, ...} @inputs: {
 
 3. Enable iridium in nixos and your home-manager (e.g. in your home.nix)
 
+configuration.nix
 ```configuration.nix
 programs.iridium.enable = true;
 ```
 
+home.nix
 ``` home.nix
 imports = [
   inputs.iridium.homeModules.default
