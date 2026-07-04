@@ -16,28 +16,23 @@ in
           content = ./keybinds.lua;
           autoLoad = true;
         };
-      };
-      extraLuaFiles = {
+
         "default.general" = {
           content = ./general.lua;
           autoLoad = true;
         };
-      };
-      extraLuaFiles = {
+
         "default.env" = {
           content = ./env.lua;
           autoLoad = true;
         };
-      };
-      extraLuaFiles = {
+
         "default.execs" = {
           content = ./execs.lua;
           autoLoad = true;
         };
-      };
 
-      extraLuaFiles = mkIf (cfg.additionalConfig != null) {
-        "custom.hyprland" = {
+        "custom.hyprland" = mkIf (cfg.additionalConfig != null){
           content = cfg.additionalConfig;
           autoLoad = true;
         };
