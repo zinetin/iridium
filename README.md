@@ -1,11 +1,13 @@
 # iridium
 Nixos module for my hyprland and quickshell dotfiles.
 
-# installation
+# Installation
 ## **WARNING**
 
 This flake assumes that both the .config/hypr and .config/quickshell directories are empty.
 It is untested as to what happens if the directories are not empty, but it could lead to a loss of configuration.
+
+## Installation
 
 1. Add iridium to your flake.nix inputs
 
@@ -30,15 +32,28 @@ outputs = {your-current-outputs, iridium, ...} @inputs: {
 }
 ```
 
-3. Enable iridium in your home-manager (e.g. in your home.nix)
+3. Enable iridium in nixos and your home-manager (e.g. in your home.nix)
 
+```configuration.nix
+programs.iridium.enable = true;
 ```
+
+``` home.nix
 imports = [
   inputs.iridium.homeModules.default
 ];
 
 programs.iridium = {
   enable = true;
-  # additionalConfig = ./extra.lua;
 };
 ```
+
+## configuration
+
+Only one configuration option is currently available
+
+```
+programs.iridium.additionalHyprConfig
+```
+
+This takes a path to a hyprland lua file

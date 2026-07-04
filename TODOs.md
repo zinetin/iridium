@@ -1,0 +1,2 @@
+- [ ] Add a way to add a directory of hyprland config files
+- [ ] Make it keep current config safe
