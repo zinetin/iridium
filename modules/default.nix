@@ -1,11 +1,24 @@
-{config, pkgs, ...}:
+{ config, lib, pkgs, ... }:
 
+with lib;
+
+let
+  cfg = config.programs.iridium;
+in
 {
-  environment.systemPackages = with pkgs: [
-    hyprland
-  ];
+  options.programs.iridium = {
+    enable = mkEnableOption "Iridium DE with Hyprland system-wide support";
+  };
 
-  programs = {
-    hyprland.enable = true;
-  }
+  config = mkIf cfg.enable {
+    # Enable Hyprland system-wide
+    programs.hyprland.enable = true;
+    
+    # Portal setup (optional but recommended)
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+      configPackages = [ pkgs.hyprland ];
+    };
+  };
 }
