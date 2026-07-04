@@ -16,7 +16,7 @@ in
     additionalConfig = mkOption {
       type = types.nullOr types.path;
       default = null;
-      description = "Optional path to an additional lua file that contains your configuration"
+      description = "Optional path to an additional lua file that contains your configuration";
       example = literalExpression "./custom.lua"
     };
   };
