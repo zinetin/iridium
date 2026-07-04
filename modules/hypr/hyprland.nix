@@ -5,8 +5,6 @@ let
 in 
 {
   config = lib.mkIf cfg.enable {
-    imports = [
-    ];
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "lua";
