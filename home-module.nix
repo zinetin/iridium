@@ -8,7 +8,7 @@ in
 {
   imports = [
     ./modules/hypr/hyprland.nix
-    ./modules/quickshell/quickshell.nix
+    ./modules/qk/quickshell.nix
   ];
   options.programs.iridium = {
     enable = mkEnableOption "Hyprland + Quickshell config";
