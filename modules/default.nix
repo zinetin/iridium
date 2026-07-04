@@ -12,8 +12,11 @@ in
 
   config = mkIf cfg.enable {
     # Enable Hyprland system-wide
+    environment.systemPackages = with pkgs; [
+      hyprland
+    ];
     programs.hyprland.enable = true;
-    
+
     # Portal setup (optional but recommended)
     xdg.portal = {
       enable = true;
