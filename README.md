@@ -6,19 +6,21 @@ Nixos module for my hyprland and quickshell dotfiles.
 This flake assumes that both the .config/hypr and .config/quickshell directories are empty.
 It is untested as to what happens if the directories are not empty, but it could lead to a loss of configuration.
 
-1. Add iridium to your flake.nix
+1. Add iridium to your flake.nix inputs
 
 ```
-iridium = {
+inputs = {
+  iridium = {
     url = "github:zinetin/iridium";
     inputs.nixpkgs.follows = "nixpkgs";
   };
+};
 ```
 
-2. Add iridium to your outputs, and the iridium module to your modules
+2. Add iridium to your outputs, and add the iridium module to your modules
 
 ```
-outputs = {your-prexisting-outputs, iridium, ...} @inputs: {
+outputs = {your-current-outputs, iridium, ...} @inputs: {
   nixosConfigurations.my-system = nixpkgs.lib.nixosSystem {
     modules = [
       iridium.nixosModules.default
@@ -27,7 +29,7 @@ outputs = {your-prexisting-outputs, iridium, ...} @inputs: {
 }
 ```
 
-3. Enable iridium in you home-manager
+3. Enable iridium in your home-manager (e.g. in your home.nix)
 
 ```
 imports = [
