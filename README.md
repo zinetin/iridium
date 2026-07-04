@@ -50,12 +50,12 @@ programs.iridium = {
 };
 ```
 
-## configuration
+## Configuration
 
 Only one configuration option is currently available
 
-```
+```home.nix
 programs.iridium.additionalHyprConfig
 ```
 
-This takes a path to a hyprland lua file
+This takes a path to a hyprland lua file that will be added to the hyprland config (is written to .config/custom/hyprland.lua)
