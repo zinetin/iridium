@@ -32,7 +32,7 @@ in
           autoLoad = true;
         };
 
-        "custom.hyprland" = mkIf (cfg.additionalConfig != null){
+        "custom.hyprland" = lib.mkIf (cfg.additionalConfig != null){
           content = cfg.additionalConfig;
           autoLoad = true;
         };
