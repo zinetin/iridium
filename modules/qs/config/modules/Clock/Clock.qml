@@ -14,6 +14,7 @@ RowLayout {
 
   ColumnLayout {
     Text {
+      Layout.alignment: Qt.AlignHCenter
       text: clock.day
       color: root.colWhite
       font {
@@ -24,6 +25,7 @@ RowLayout {
     }
 
     Text {
+      Layout.alignment: Qt.AlignHCenter
       text: clock.thisdate
       color: root.colWhite
       font {
@@ -34,6 +36,7 @@ RowLayout {
     }
 
     Text {
+      Layout.alignment: Qt.AlignHCenter
       text: clock.thistime
       color: root.colWhite
       font {
@@ -46,7 +49,7 @@ RowLayout {
  
   Process {
     id: dayProc
-    command: ["date", "+%A"]
+    command: ["date", "+%a"]
     stdout: StdioCollector {
       onStreamFinished: clock.day = this.text.trim()
     }
@@ -54,7 +57,7 @@ RowLayout {
 
   Process {
     id: dateProc
-    command: ["date", "+%D"]
+    command: ["date", "+%m/%d"]
     stdout: StdioCollector {
       onStreamFinished: clock.thisdate = this.text.trim()
     }
@@ -62,7 +65,7 @@ RowLayout {
 
   Process {
     id: timeProc
-    command: ["date", "+%T"]
+    command: ["date", "+%H:%M"]
     stdout: StdioCollector {
       onStreamFinished: clock.thistime = this.text.trim()
     }

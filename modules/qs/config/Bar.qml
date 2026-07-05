@@ -11,6 +11,8 @@ import "modules/Battery"
 PanelWindow {
   id: rootbar
 
+  implicitWidth: 60
+
   anchors {
     top: true
     left: true
@@ -23,16 +25,26 @@ PanelWindow {
     anchors.fill: parent
     anchors.margins: 8
 
-    Workspaces {}
+    Workspaces {
+      Layout.alignment: Qt.AlignHCenter
+    }
 
     Item { Layout.fillHeight: true }
 
-    CPU {}
+    CPU {
+      Layout.alignment: Qt.AlignHCenter
+    }
 
-    Memory {}
+    Memory {
+      Layout.alignment: Qt.AlignHCenter
+    }
 
-    Battery {}
+    Battery {
+      Layout.alignment: Qt.AlignHCenter
+    }
     
-    Clock {}
+    Clock {
+      Layout.alignment: Qt.AlignHCenter
+    }
   }
 }
