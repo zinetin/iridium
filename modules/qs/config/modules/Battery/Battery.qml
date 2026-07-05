@@ -32,7 +32,7 @@ RowLayout {
 
   Process {
     id: batProc
-    command: ["sh", "-c", "cat /sys/class/power_supply/BAT0/capacity"]
+    command: ["sh", "-c", "cat /sys/class/power_supply/BAT*/capacity"]
     stdout: StdioCollector {
       onStreamFinished: battery.battery = this.text.trim()
       
