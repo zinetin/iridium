@@ -56,8 +56,8 @@ for i = 1, 4 do
   hl.bind("SUPER + " .. vimrowkey[i], hl.dsp.focus({direction = focusdir[i]}))
   hl.bind("SUPER + SHIFT + " .. arrowkey[i], hl.dsp.window.move({direction = focusdir[i]}))
   hl.bind("SUPER + SHIFT + " .. vimrowkey[i], hl.dsp.window.move({direction = focusdir[i]}))
-  hl.bind("SUPER + CONTROL + " .. arrowkey[i], hl.dsp.window.resize({ x = resizedir[i][0], y = resizedir[i][1], relative = true }), {repeating = true})
-  hl.bind("SUPER + CONTROL + " .. vimrowkey[i], hl.dsp.window.resize({ x = resizedir[i][0], y = resizedir[i][1], relative = true }), {repeating = true})
+  hl.bind("SUPER + CONTROL + " .. arrowkey[i], hl.dsp.window.resize({ x = resizedir[i][1], y = resizedir[i][2], relative = true }), {repeating = true})
+  hl.bind("SUPER + CONTROL + " .. vimrowkey[i], hl.dsp.window.resize({ x = resizedir[i][1], y = resizedir[i][2], relative = true }), {repeating = true})
 end
 
 for i = 0, 9 do
