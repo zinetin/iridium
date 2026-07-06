@@ -35,8 +35,6 @@ hl.bind("CTRL + Print",                hl.dsp.exec_cmd([[ bash -c 'FILE="$HOME/P
 
 -- Workspace and Window Management
 
-hl.bind("SUPER + period",              hl.dsp.layout("consume_or_expel prev" ))
-
 hl.bind("SUPER + F",                   hl.dsp.window.fullscreen({mode = "fullscreen", action = "toggle"}))
 hl.bind("SUPER + SHIFT + F",           hl.dsp.window.fullscreen({mode = "maximized", action = "toggle"}))
 
@@ -50,13 +48,16 @@ hl.bind("SUPER + mouse:272",           hl.dsp.window.drag(), {mouse = true })
 hl.bind("SUPER + mouse:273",           hl.dsp.window.resize(), {mouse = true })
 
 for i = 1, 4 do
-  local arrowkey =  { "Left", "Right", "Up", "Down"}
-  local vimrowkey = { "h",    "l",     "k",  "j"}
-  local focusdir =  { "l",    "r",     "u",  "d"}
+  local arrowkey =  { "Left",   "Right", "Up",     "Down"}
+  local vimrowkey = { "h",      "l",     "k",      "j"}
+  local focusdir =  { "l",      "r",     "u",      "d"}
+  local resizedir = { {-10, 0}, {10, 0}, {0, -10}, {0, 10} }
   hl.bind("SUPER + " .. arrowkey[i], hl.dsp.focus({direction = focusdir[i]}))
   hl.bind("SUPER + " .. vimrowkey[i], hl.dsp.focus({direction = focusdir[i]}))
   hl.bind("SUPER + SHIFT + " .. arrowkey[i], hl.dsp.window.move({direction = focusdir[i]}))
   hl.bind("SUPER + SHIFT + " .. vimrowkey[i], hl.dsp.window.move({direction = focusdir[i]}))
+  hl.bind("SUPER + CONTROL + " .. arrowkey[i], hl.dsp.window.resize({ x = resizedir[i][0], y = resizedir[i][1], relative = true }), {repeating = true})
+  hl.bind("SUPER + CONTROL + " .. vimrowkey[i], hl.dsp.window.resize({ x = resizedir[i][0], y = resizedir[i][1], relative = true }), {repeating = true})
 end
 
 for i = 0, 9 do
