@@ -10,6 +10,11 @@ hl.monitor({
   scale = 1,
 })
 
+hl.workspace_rule({
+  workspace = "*",
+  layout = "scrolling"
+})
+
 hl.config({
   misc = {
     force_default_wallpaper = 0,
