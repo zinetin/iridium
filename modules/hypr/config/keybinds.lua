@@ -35,7 +35,7 @@ hl.bind("CTRL + Print",                hl.dsp.exec_cmd([[ bash -c 'FILE="$HOME/P
 
 -- Workspace and Window Management
 
-hl.bind("SUPER + period",              hl.dsp.layout("consume_or_expel prev"))
+hl.bind("SUPER + period",              hl.dsp.layout({ msg = "consume_or_expel prev" }))
 
 hl.bind("SUPER + F",                   hl.dsp.window.fullscreen({mode = "fullscreen", action = "toggle"}))
 hl.bind("SUPER + SHIFT + F",           hl.dsp.window.fullscreen({mode = "maximized", action = "toggle"}))
@@ -43,7 +43,7 @@ hl.bind("SUPER + SHIFT + F",           hl.dsp.window.fullscreen({mode = "maximiz
 hl.bind("SUPER + Q",                   hl.dsp.window.close())
 
 hl.bind("SUPER + CONTROL +  Right",    hl.dsp.focus({ workspace = "+1" }))
-hl.bind("SUPER + CONTROL +  Left",     hl.dsp.focus({ workspace = "+1" }))
+hl.bind("SUPER + CONTROL +  Left",     hl.dsp.focus({ workspace = "-1" }))
 
 hl.bind("SUPER + Space",               hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + mouse:272",           hl.dsp.window.drag(), {mouse = true })
