@@ -35,7 +35,7 @@ hl.bind("CTRL + Print",                hl.dsp.exec_cmd([[ bash -c 'FILE="$HOME/P
 
 -- Workspace and Window Management
 
-hl.bind("SUPER + period",              hl.dsp.layout({ msg = "consume_or_expel prev" }))
+hl.bind("SUPER + period",              hl.dsp.layout("consume_or_expel", "prev" ))
 
 hl.bind("SUPER + F",                   hl.dsp.window.fullscreen({mode = "fullscreen", action = "toggle"}))
 hl.bind("SUPER + SHIFT + F",           hl.dsp.window.fullscreen({mode = "maximized", action = "toggle"}))
