@@ -10,9 +10,13 @@ hl.monitor({
   scale = 1,
 })
 
-hl.workspace_rule({
-  workspace = "*",
-  layout = "scrolling"
+hl.config({
+  general = {
+    layout = "scrolling"
+  },
+  scrolling = {
+    direction = "right",
+  }
 })
 
 hl.config({

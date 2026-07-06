@@ -42,6 +42,13 @@ hl.bind("SUPER + SHIFT + F",           hl.dsp.window.fullscreen({mode = "maximiz
 
 hl.bind("SUPER + Q",                   hl.dsp.window.close())
 
+hl.bind("SUPER + CONTROL +  Right",    hl.dsp.focus({ workspace = "+1" }))
+hl.bind("SUPER + CONTROL +  Left",     hl.dsp.focus({ workspace = "+1" }))
+
+hl.bind("SUPER + Space",               hl.dsp.window.float({ action = "toggle" }))
+hl.bind("SUPER + mouse:272",           hl.dsp.window.drag(), {mouse = true })
+hl.bind("SUPER + mouse:273",           hl.dsp.window.resize(), {mouse = true })
+
 for i = 1, 4 do
   local arrowkey =  { "Left", "Right", "Up", "Down"}
   local vimrowkey = { "h",    "l",     "k",  "j"}
