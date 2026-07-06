@@ -3,6 +3,7 @@ hl.bind("SUPER + w",                   hl.dsp.exec_cmd("zen-beta"))
 hl.bind("SUPER + e",                   hl.dsp.exec_cmd("thunar"))
 hl.bind("SUPER + t",                   hl.dsp.exec_cmd("kitty"))
 hl.bind("SUPER + m",                   hl.dsp.exec_cmd("feishin"))
+hl.bind("SUPER + y",                   hl.dsp.exec_cmd("steam"))
 
 
 -- Vim bind anywhere 
