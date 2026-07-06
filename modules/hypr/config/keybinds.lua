@@ -40,8 +40,8 @@ hl.bind("SUPER + SHIFT + F",           hl.dsp.window.fullscreen({mode = "maximiz
 
 hl.bind("SUPER + Q",                   hl.dsp.window.close())
 
-hl.bind("SUPER + CONTROL +  Right",    hl.dsp.focus({ workspace = "+1" }))
-hl.bind("SUPER + CONTROL +  Left",     hl.dsp.focus({ workspace = "-1" }))
+hl.bind("SUPER + ALT +  Right",    hl.dsp.focus({ workspace = "+1" }))
+hl.bind("SUPER + ALT +  Left",     hl.dsp.focus({ workspace = "-1" }))
 
 hl.bind("SUPER + Space",               hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + mouse:272",           hl.dsp.window.drag(), {mouse = true })
