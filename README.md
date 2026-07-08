@@ -1,5 +1,6 @@
 # iridium
 A Hyprland and Quickshell configuration made for NixOS focused on usability.
+You should be able to install this via Nix on non NixOS systems
 
 # Installation
 ## **WARNING**
@@ -49,6 +50,15 @@ programs.iridium = {
   enable = true;
 };
 ```
+
+## Manual Installtion
+
+1. Install Hyprland and Quickshell (I will try to keep this up to date as I add more packages, or try to move all packages to their own file)
+
+2. Clone the repository.
+
+3. Copy the contents of the config folders. (e.g., copy modules/hyprland/config/* to ~/.config/hypr/)
+For this step note that modules/qs/config/* should be copied to ~/.config/quickshell/
 
 ## Configuration
 
