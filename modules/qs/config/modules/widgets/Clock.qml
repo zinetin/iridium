@@ -3,7 +3,7 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 
-RowLayout {
+ColumnLayout {
   spacing: 6
 
   id: clock
