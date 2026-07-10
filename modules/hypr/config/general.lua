@@ -12,7 +12,8 @@ hl.monitor({
 
 hl.config({
   general = {
-    layout = "scrolling"
+    layout = "scrolling",
+    border_size = 0,
   },
   scrolling = {
     direction = "right",
