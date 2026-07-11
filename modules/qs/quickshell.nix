@@ -13,14 +13,9 @@ in
       quickshell
     ];
 
-    xdg.configFile."quickshell.bar" = {
-      source = ./config/bar;
+    xdg.configFile."quickshell" = {
+      source = ./config;
       recursive = true;
     };
-    xdg.configFile."quickshell.bar" = {
-      source = ./config/launcher;
-      recursive = true;
-    };
-
   };
 }
