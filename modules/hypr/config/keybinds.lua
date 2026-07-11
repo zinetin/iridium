@@ -12,7 +12,7 @@ hl.bind("ALT + j",                                     hl.dsp.send_shortcut({ mo
 hl.bind("ALT + k",                                     hl.dsp.send_shortcut({ mods = "", key = "up", window = "activewindow" }))
 hl.bind("ALT + l",                                     hl.dsp.send_shortcut({ mods = "", key = "right", window = "activewindow" }))
 hl.bind("ALT + x",                                     hl.dsp.send_shortcut({ mods = "", key = "backspace", window = "activewindow" }))
-hl.bind("ALT + ;",                                     hl.dsp.send_shortcut({ mods = "", key = "enter", window = "activewindow" }))
+hl.bind("ALT + semicolon",                                     hl.dsp.send_shortcut({ mods = "", key = "enter", window = "activewindow" }))
 
 -- Media control
 hl.bind("SUPER + CONTROL + 5",                         hl.dsp.exec_cmd("playerctl previous"))
