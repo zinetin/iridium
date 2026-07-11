@@ -6,12 +6,13 @@ hl.bind("SUPER + m",                                   hl.dsp.exec_cmd("feishin"
 hl.bind("SUPER + y",                                   hl.dsp.exec_cmd("steam"))
 
 
--- Vim bind anywhere 
+-- Vim bind anywhere + some other stuff 
 hl.bind("ALT + h",                                     hl.dsp.send_shortcut({ mods = "", key = "left", window = "activewindow" }))
 hl.bind("ALT + j",                                     hl.dsp.send_shortcut({ mods = "", key = "down", window = "activewindow" }))
 hl.bind("ALT + k",                                     hl.dsp.send_shortcut({ mods = "", key = "up", window = "activewindow" }))
 hl.bind("ALT + l",                                     hl.dsp.send_shortcut({ mods = "", key = "right", window = "activewindow" }))
 hl.bind("ALT + x",                                     hl.dsp.send_shortcut({ mods = "", key = "backspace", window = "activewindow" }))
+hl.bind("ALT + ;",                                     hl.dsp.send_shortcut({ mods = "", key = "enter", window = "activewindow" }))
 
 -- Media control
 hl.bind("SUPER + CONTROL + 5",                         hl.dsp.exec_cmd("playerctl previous"))
@@ -53,7 +54,7 @@ hl.bind("SUPER + mouse:273",                           hl.dsp.window.resize(), {
 for i = 1, 2 do
   local arrowkey =  {"Left",     "Right"}
   local vimrowkey = {"h",        "l"}
-  local focusdir =  {"-1",       "-1"}
+  local focusdir =  {"-1",       "+1"}
   hl.bind("SUPER + ALT + " .. arrowkey[i],             hl.dsp.focus({ workspace = focusdir[i] }))
   hl.bind("SUPER + ALT + " .. vimrowkey[i],            hl.dsp.focus({ workspace = focusdir[i] }))
   hl.bind("SUPER + SHIFT + ALT + " .. arrowkey[i],     hl.dsp.window.move({ workspace = focusdir[i] }))
