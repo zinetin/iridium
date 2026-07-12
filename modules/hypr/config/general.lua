@@ -15,14 +15,20 @@ hl.config({
     layout = "scrolling",
     border_size = 0,
   },
+
   scrolling = {
     direction = "right",
-  }
-})
+  },
 
-hl.config({
   misc = {
     force_default_wallpaper = 0,
     disable_hyprland_logo = false,
+  },
+
+  input = {
+    touchpad = {
+      disable_while_typing = false,
+    }
   }
 })
+
