@@ -3,6 +3,7 @@ hl.bind("SUPER + w",                                   hl.dsp.exec_cmd("zen-beta
 hl.bind("SUPER + e",                                   hl.dsp.exec_cmd("dolphin"))
 hl.bind("SUPER + t",                                   hl.dsp.exec_cmd("kitty"))
 hl.bind("SUPER + m",                                   hl.dsp.exec_cmd("feishin"))
+hl.bind("SUPER + CONTROL + m",                         hl.dsp.exec_cmd("spotify"))
 hl.bind("SUPER + y",                                   hl.dsp.exec_cmd("steam"))
 
 
@@ -12,7 +13,7 @@ hl.bind("ALT + j",                                     hl.dsp.send_shortcut({ mo
 hl.bind("ALT + k",                                     hl.dsp.send_shortcut({ mods = "", key = "up", window = "activewindow" }))
 hl.bind("ALT + l",                                     hl.dsp.send_shortcut({ mods = "", key = "right", window = "activewindow" }))
 hl.bind("ALT + x",                                     hl.dsp.send_shortcut({ mods = "", key = "backspace", window = "activewindow" }))
-hl.bind("ALT + semicolon",                                     hl.dsp.send_shortcut({ mods = "", key = "enter", window = "activewindow" }))
+hl.bind("ALT + semicolon",                             hl.dsp.send_shortcut({ mods = "", key = "enter", window = "activewindow" }))
 
 -- Media control
 hl.bind("SUPER + CONTROL + 5",                         hl.dsp.exec_cmd("playerctl previous"))
