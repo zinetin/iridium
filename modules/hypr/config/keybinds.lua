@@ -46,8 +46,8 @@ hl.bind("SUPER + Space",                               hl.dsp.window.float({ act
 hl.bind("SUPER + mouse:272",                           hl.dsp.window.drag(), {mouse = true })
 hl.bind("SUPER + mouse:273",                           hl.dsp.window.resize(), {mouse = true })
 
-hl.bind("SUPER + mouse_up",                            hl.dsp.focus({ direction = "u" }))
-hl.bind("SUPER + mouse_down",                          hl.dsp.focus({ direction = "d" }))
+hl.bind("SUPER + mouse_up",                            hl.dsp.focus({ direction = "d" }))
+hl.bind("SUPER + mouse_down",                          hl.dsp.focus({ direction = "u" }))
 
 for i = 1, 2 do
   local arrowkey =  {"Left",     "Right"}
