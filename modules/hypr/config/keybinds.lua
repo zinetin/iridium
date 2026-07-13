@@ -13,15 +13,15 @@ hl.bind("ALT + j",                                     hl.dsp.send_shortcut({ mo
 hl.bind("ALT + k",                                     hl.dsp.send_shortcut({ mods = "", key = "up", window = "activewindow" }))
 hl.bind("ALT + l",                                     hl.dsp.send_shortcut({ mods = "", key = "right", window = "activewindow" }))
 hl.bind("ALT + x",                                     hl.dsp.send_shortcut({ mods = "", key = "backspace", window = "activewindow" }))
-hl.bind("ALT + semicolon",                             hl.dsp.send_shortcut({ mods = "", key = "enter", window = "activewindow" }))
+hl.bind("ALT + semicolon",                             hl.dsp.send_shortcut({ mods = "", key = "return", window = "activewindow" }))
 
 -- Media control
 hl.bind("SUPER + CONTROL + 5",                         hl.dsp.exec_cmd("playerctl previous"))
 hl.bind("SUPER + CONTROL + 6",                         hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("SUPER + CONTROL + 7",                         hl.dsp.exec_cmd("playerctl next"))
 
-hl.bind("SUPER + CONTROL + 8",                         hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -2%"))
-hl.bind("SUPER + CONTROL + 9",                         hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle"))
+hl.bind("SUPER + CONTROL + 8",                         hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle"))
+hl.bind("SUPER + CONTROL + 9",                         hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -2%"))
 hl.bind("SUPER + CONTROL + 0",                         hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +2%"))
 
 -- Screenshots
@@ -41,12 +41,6 @@ hl.bind("SUPER + F",                                   hl.dsp.window.fullscreen(
 hl.bind("SUPER + SHIFT + F",                           hl.dsp.window.fullscreen({mode = "maximized", action = "toggle"}))
 
 hl.bind("SUPER + Q",                                   hl.dsp.window.close())
-
-hl.bind("SUPER + ALT + Right",                         hl.dsp.focus({ workspace = "+1" }))
-hl.bind("SUPER + ALT + Left",                          hl.dsp.focus({ workspace = "-1" }))
-
-hl.bind("SUPER + ALT + Right",                         hl.dsp.focus({ workspace = "+1" }))
-hl.bind("SUPER + ALT + Left",                          hl.dsp.focus({ workspace = "-1" }))
 
 hl.bind("SUPER + Space",                               hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + mouse:272",                           hl.dsp.window.drag(), {mouse = true })
