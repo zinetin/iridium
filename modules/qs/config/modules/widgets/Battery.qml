@@ -11,7 +11,7 @@ RowLayout {
   property real battery: 0
 
   Text {
-    text: " "
+    text: "B"
     color: root.colYellow
     font {
       family: root.fontFamily
@@ -21,7 +21,7 @@ RowLayout {
   }
 
   Text {
-    text: Math.round(parent.battery) + "%"
+    text: Math.round(parent.battery) + ""
     color: parent.battery < 10 ? root.colRed : root.colYellow
     font {
       family: root.fontFamily

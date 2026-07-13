@@ -4,9 +4,9 @@ import Quickshell
 import Quickshell.Io
 
 Item {
-  id: mem
+  id: gpu
 
-  property real memUsage: 0
+  property real gpuUsage: 0
 
 
   width: 30
@@ -28,11 +28,11 @@ Item {
       capStyle: ShapePath.RoundCap
 
       PathAngleArc {
-        centerX: mem.width / 2
-        centerY: mem.height / 2
+        centerX: gpu.width / 2
+        centerY: gpu.height / 2
 
-        radiusX: (mem.width - root.lineWidth) / 2
-        radiusY: (mem.height - root.lineWidth) / 2
+        radiusX: (gpu.width - root.lineWidth) / 2
+        radiusY: (gpu.height - root.lineWidth) / 2
 
         startAngle: 0
         sweepAngle: 360
@@ -51,45 +51,45 @@ Item {
 
     ShapePath {
       strokeWidth: root.lineWidth
-      strokeColor: mem.memUsage < 80 ? root.colMuted : root.colRed
+      strokeColor: gpu.gpuUsage < 80 ? root.colMuted : root.colRed
       fillColor: "transparent"
       capStyle: ShapePath.RoundCap
 
       PathAngleArc {
-        centerX: mem.width / 2
-        centerY: mem.height / 2
+        centerX: gpu.width / 2
+        centerY: gpu.height / 2
 
-        radiusX: (mem.width - root.lineWidth) / 2
-        radiusY: (mem.height - root.lineWidth) / 2
+        radiusX: (gpu.width - root.lineWidth) / 2
+        radiusY: (gpu.height - root.lineWidth) / 2
 
         startAngle: -90
-        sweepAngle: (mem.memUsage / 100) * 360
+        sweepAngle: (gpu.gpuUsage / 100) * 360
       }
     }
   }
 
   Text {
     anchors.centerIn: parent
-    text: " "
-    color: root.colPurple
+    text: " "
+    color: root.colGreen
     font.pixelSize: root.fontSize
   }
 
   Process {
-    id: memProc
-    command: ["sh", "-c", "free | awk '/^Mem:/{printf \"%.0f\", 100*$3/$2}'"]
+    id: gpuProc
+    command: ["sh", "-c", "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits -i 0"]
 
     stdout: StdioCollector {
       onStreamFinished: {
-        mem.memUsage = parseInt(text.trim()) 
+        gpu.gpuUsage = parseInt(text.trim()) 
       }
     }
   }
 
   Timer {
-    interval: 2000
+    interval: 4000
     running: true
     repeat: true
-    onTriggered: memProc.running = true
+    onTriggered: gpuProc.running = true
   }
 }

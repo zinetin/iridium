@@ -1,33 +1,80 @@
 import QtQuick
-import QtQuick.Layouts
+import QtQuick.Shapes
 import Quickshell
 import Quickshell.Io
 
-RowLayout {
-  spacing: 6
+Item {
+  id: cpu
 
   property real cpuUsage: 0
   property real lastCpuTotal: 0
   property real lastCpuIdle: 0
 
-  Text {
-    text: "  "
-    color: root.colBlue
-    font {
-      family: root.fontFamily
-      pixelSize: root.fontSize
-      bold: true
+
+  width: 30
+  height: 30
+
+  Shape {
+    anchors.fill: parent
+    antialiasing: true
+    smooth: true
+
+    layer.enabled: true
+    layer.smooth: true
+    layer.samples: 4
+
+    ShapePath {
+      strokeWidth: root.lineWidth
+      strokeColor: root.colFBg
+      fillColor: "transparent"
+      capStyle: ShapePath.RoundCap
+
+      PathAngleArc {
+        centerX: cpu.width / 2
+        centerY: cpu.height / 2
+
+        radiusX: (cpu.width - root.lineWidth) / 2
+        radiusY: (cpu.height - root.lineWidth) / 2
+
+        startAngle: 0
+        sweepAngle: 360
+      }
+    }
+  }
+
+  Shape {
+    anchors.fill: parent
+    antialiasing: true
+    smooth: true
+
+    layer.enabled: true
+    layer.smooth: true
+    layer.samples: 4
+
+    ShapePath {
+      strokeWidth: root.lineWidth
+      strokeColor: cpu.cpuUsage < 80 ? root.colMuted : root.colRed
+      fillColor: "transparent"
+      capStyle: ShapePath.RoundCap
+
+      PathAngleArc {
+        centerX: cpu.width / 2
+        centerY: cpu.height / 2
+
+        radiusX: (cpu.width - root.lineWidth) / 2
+        radiusY: (cpu.height - root.lineWidth) / 2
+
+        startAngle: -90
+        sweepAngle: (cpu.cpuUsage / 100) * 360
+      }
     }
   }
 
   Text {
-    text: Math.round(parent.cpuUsage) + "%"
-    color: parent.cpuUsage > 80 ? root.colYellow : root.colBlue
-    font {
-      family: root.fontFamily
-      pixelSize: root.fontSize
-      bold: true
-    }
+    anchors.centerIn: parent
+    text: " "
+    color: root.colBlue
+    font.pixelSize: root.fontSize
   }
 
   Process {
