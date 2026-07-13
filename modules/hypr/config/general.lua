@@ -17,7 +17,7 @@ hl.config({
   },
 
   scrolling = {
-    direction = "right",
+    direction = "down",
   },
 
   misc = {
