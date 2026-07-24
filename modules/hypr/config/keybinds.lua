@@ -27,13 +27,13 @@ hl.bind("SUPER + CONTROL + 0",                         hl.dsp.exec_cmd("pactl se
 -- Screenshots
 local screenshot_dir = os.getenv("HOME") .. "Pictures/Screenshots"
 
-hl.bind("SUPER + SHIFT + S",                           hl.dsp.exec_cmd("grimblast --notify copysave area " .. screenshot_dir .. "/$(date +%Y%m%d-%H%M%S).png"))
+hl.bind("SUPER + SHIFT + S",                           hl.dsp.exec_cmd("grimblast --freeze --notify copysave area " .. screenshot_dir .. "/$(date +%Y%m%d-%H%M%S).png"))
 
-hl.bind("CTRL + SUPER + SHIFT + S",                    hl.dsp.exec_cmd([[bash -c 'FILE="$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png"; grimblast save area - | satty --filename - --output-filename "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot saved" "$FILE"']]))
+hl.bind("CTRL + SUPER + SHIFT + S",                    hl.dsp.exec_cmd([[bash -c 'FILE="$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png"; grimblast --freeze save area - | satty --filename - --output-filename "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot saved" "$FILE"']]))
 
-hl.bind("Print",                                       hl.dsp.exec_cmd("grimblast --notify copysave output " .. screenshot_dir .. "/$(date +%Y%m%d-%H%M%S).png"))
+hl.bind("Print",                                       hl.dsp.exec_cmd("grimblast --freeze --notify copysave output " .. screenshot_dir .. "/$(date +%Y%m%d-%H%M%S).png"))
 
-hl.bind("CTRL + Print",                                hl.dsp.exec_cmd([[ bash -c 'FILE="$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png"; grimblast save output - | satty --filename - --output-filename "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot saved" "$FILE"' ]]))
+hl.bind("CTRL + Print",                                hl.dsp.exec_cmd([[ bash -c 'FILE="$HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png"; grimblast --freeze save output - | satty --filename - --output-filename "$FILE" && wl-copy < "$FILE" && notify-send "Screenshot saved" "$FILE"' ]]))
 
 -- Workspace and Window Management
 
