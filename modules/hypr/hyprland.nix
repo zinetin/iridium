@@ -1,10 +1,17 @@
-{config, inputs, lib, ...}:
+{config, pkgs, inputs, lib, ...}:
 
 let
   cfg = config.programs.iridium;
 in 
 {
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      grimblast
+      hyprpicker
+      satty
+    ];
+
+
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "lua";
