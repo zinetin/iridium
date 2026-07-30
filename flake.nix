@@ -13,7 +13,7 @@
     ];
   in 
   {
-    nixosModules.default = import ./modules/default.nix;
+    nixosModules.default = import ./modules/root/root.nix;
 
     homeModules.default = import ./home-module.nix;
 

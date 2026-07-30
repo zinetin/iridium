@@ -14,6 +14,7 @@ in
     # Enable Hyprland system-wide
     environment.systemPackages = with pkgs; [
       hyprland
+      polkit_gnome
     ];
     programs.hyprland.enable = true;
 
