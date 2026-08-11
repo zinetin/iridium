@@ -57,7 +57,7 @@ ColumnLayout {
 
   Process {
     id: dateProc
-    command: ["date", "+%m/%d"]
+    command: ["date", "+%d/%m"]
     stdout: StdioCollector {
       onStreamFinished: clock.thisdate = this.text.trim()
     }
