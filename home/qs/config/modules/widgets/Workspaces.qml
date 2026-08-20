@@ -5,10 +5,8 @@ import QtQuick.Layouts
 
 Rectangle {
 
-  width: 42
-  height: workspaces.height + 16
+  height: workspaces.height
   color: root.colBFBg
-  radius: width / 2
 
   ColumnLayout {
     id: workspaces
@@ -32,12 +30,14 @@ Rectangle {
         color: root.colFBg
         radius: width / 2
 
+        property var ws: modelData
+        property bool isActive: Hyprland.focusedWorkspace?.id === ws.id
+
+
         Text {
           anchors.centerIn: parent
 
-          property var ws: modelData
-          property bool isActive: Hyprland.focusedWorkspace?.id === ws.id
-
+          
           Layout.alignment: Qt.AlignHCenter
 
           text: ws.name.startsWith("special: ") ? ws.name.replace("special: ", "s") : ws.id
@@ -49,10 +49,10 @@ Rectangle {
             family: root.fontFamily
           }
 
-          MouseArea {
-            anchors.fill: parent
-            onClicked: Hyprland.dispatch("hl.dsp.focus({ workspace = " + ws.id + "})")
-          }
+        }
+        MouseArea {
+          anchors.fill: parent
+          onClicked: Hyprland.dispatch("hl.dsp.focus({ workspace = " + ws.id + "})")
         }
       }
     }

@@ -22,7 +22,7 @@ ShellRoot {
   property color colRed: "#d42020"
   property real lineWidth: 8
   property string fontFamily: "JetBrainsMono Nerd Font"
-  property int fontSize: 14
+  property int fontSize: 12
 
   Bar {}
   Search {}

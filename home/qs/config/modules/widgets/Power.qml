@@ -2,12 +2,20 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
-Text {
-  text: "⏻ "
-  color: root.colWhite
-  font {
+Rectangle {
+  width: 30
+  height: 30
+  color: root.colFBg
+  radius:  width/2
+
+  Text {
+    anchors.centerIn: parent
+    text: "⏻"
+    color: root.colBlue
+    font {
       family: root.fontFamily
       pixelSize: root.fontSize
       bold: true
+    }
   }
 }
