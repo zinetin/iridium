@@ -3,7 +3,22 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 
-Text{
-  text: "tray"
+Rectangle {
+
+  id: trayWrap
+
+  width: 42
+  height: tray.height + 16
+  color: root.colBFBg
+  radius: width / 2
+
+
+  ColumnLayout {
+
+    id: tray
+    anchors.centerIn: parent
+
+    OtherTrayBits {}
+  }
 }
 

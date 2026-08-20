@@ -52,20 +52,12 @@ Variants {
       SysUsage {
         Layout.alignment: Qt.AlignHCenter
       } 
-  
-      Battery {
-        Layout.alignment: Qt.AlignHCenter
-      }
-      
+            
       Clock {
         Layout.alignment: Qt.AlignHCenter
       }
   
       Tray {
-        Layout.alignment: Qt.AlignHCenter
-      }
-  
-      ThatOtherTray {
         Layout.alignment: Qt.AlignHCenter
       }
   

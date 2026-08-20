@@ -1,5 +1,7 @@
 -- Keybinds
+hl.bind("SUPER + d",                                   hl.dsp.exec_cmd("qs ipc call launcher toggle"))
 hl.bind("SUPER + w",                                   hl.dsp.exec_cmd("zen-beta"))
+hl.bind("SUPER + SHIFT + w",                           hl.dsp.exec_cmd("virt-manager"))
 hl.bind("SUPER + e",                                   hl.dsp.exec_cmd("dolphin"))
 hl.bind("SUPER + t",                                   hl.dsp.exec_cmd("kitty"))
 hl.bind("SUPER + m",                                   hl.dsp.exec_cmd("feishin"))
