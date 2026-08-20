@@ -3,6 +3,7 @@ import Quickshell.Wayland
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
+import "modules/popups"
 
 ShellRoot {
   id: root
@@ -24,4 +25,5 @@ ShellRoot {
   property int fontSize: 14
 
   Bar {}
+  Search {}
 }
