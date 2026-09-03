@@ -1,0 +1,86 @@
+import Quickshell
+import Quickshell.Io
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import Quickshell.Services.SystemTray
+
+
+Rectangle {
+
+  id: trayWrap
+
+  width: 42
+  height: tray.height + 16
+  color: root.colDarkestGrey
+  radius: width / 2
+
+
+  ColumnLayout {
+
+    id: tray
+    anchors.centerIn: parent
+
+
+
+    spacing: 6
+
+    Repeater {
+      // Reference the global SystemTray singleton's items array
+      model: SystemTray.items
+
+      delegate: Item {
+        id: trayItemWrapper
+
+        // SystemTrayItem exposes properties like 'icon', 'title', etc.
+        required property var modelData
+
+        implicitWidth: 24
+        implicitHeight: 24
+
+        // System tray icon visual representation
+        Image {
+          anchors.fill: parent
+          // SystemTrayItem provides an icon name or path string
+          source: trayItemWrapper.modelData.icon || "dialog-question"
+          fillMode: Image.PreserveAspectFit
+
+          // Optional: Fallback text if the image fails to load
+          Text {
+            anchors.fill: parent
+            visible: parent.status === Image.Error
+            text: "⚙"
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+          }
+        }
+
+        // Capture clicks and context menus
+        MouseArea {
+          anchors.fill: parent
+          acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+          // Simple tooltip using the item's title or description
+          ToolTip.visible: containsMouse
+          ToolTip.text: trayItemWrapper.modelData.tooltipTitle || trayItemWrapper.modelData.title || ""
+          hoverEnabled: true
+
+          onClicked: (mouse) => {
+            if (mouse.button === Qt.LeftButton) {
+              // Left click usually triggers primary activation
+              trayItemWrapper.modelData.activate();
+            } else if (mouse.button === Qt.RightButton) {
+              // Right click pops open the application's native menu
+              // We map local mouse coordinates relative to the panel window
+              let globalPos = mapToItem(null, mouse.x, mouse.y);
+              trayItemWrapper.modelData.display(systrayRoot.Window.window, globalPos.x, globalPos.y);
+            }
+          }
+        }
+      }
+    }
+
+    OtherTrayBits {}
+  }
+}
+

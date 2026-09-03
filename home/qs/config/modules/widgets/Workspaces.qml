@@ -27,12 +27,12 @@ Rectangle {
         Layout.alignment: Qt.AlignHCenter
         width: 30
         height: 30
-        color: root.colFBg
         radius: width / 2
 
         property var ws: modelData
         property bool isActive: Hyprland.focusedWorkspace?.id === ws.id
 
+        color: isActive ? root.colWhite : root.colGrey
 
         Text {
           anchors.centerIn: parent
@@ -41,7 +41,7 @@ Rectangle {
           Layout.alignment: Qt.AlignHCenter
 
           text: ws.name.startsWith("special: ") ? ws.name.replace("special: ", "s") : ws.id
-          color: isActive ? root.colBlue : root.colMuted
+          color: isActive ? root.colBlack : root.colWhite
 
           font {
             pixelSize: root.fontSize

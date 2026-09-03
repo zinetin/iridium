@@ -11,33 +11,50 @@ Item {
   width: 30
   height: 30
 
-  Rectangle {
-    id: body
+  ColumnLayout {
+    anchors.fill: parent
 
-    anchors.centerIn: parent
-    width: 20
-    height: 10
-    radius: 2
-    color: "transparent"
-    border.width: 2
-    border.color: root.colMuted
-  }
+    Text {
+      anchors.centerIn: parent
+      text: "Bat"
+      color: root.colWhite
+      font.pixelSize: root.fontSize
+    }
 
-  Rectangle {
-    id: fill
+    Item {
+      Layout.alignment: Qt.AlignHCenter
 
-    anchors.left: body.left
-    anchors.top: body.top
-    anchors.bottom: body.bottom
-    anchors.margins: 2
-    width: Math.max(0, (body.width - 4) * (battery.level / 100))
-    radius: 1
-    color: battery.level < 10 ? root.colRed : battery.level < 30 ? root.colYellow : root.colGreen
+      Rectangle {
+        id: body
 
-    Behavior on width {
-      NumberAnimation {
-        duration: 400
-        easing.type: Easing.OutCubic
+        anchors.centerIn: parent
+        width: 30
+        height: 15
+        radius: 2
+        color: "transparent"
+        border.width: 2
+        border.color: root.colLightGrey
+
+        
+      }
+
+      Rectangle {
+        id: fill
+
+        anchors.left: body.left
+        anchors.top: body.top
+        anchors.bottom: body.bottom
+        anchors.margins: 2
+        width: Math.max(0, (body.width - 4) * (battery.level / 100))
+        radius: 1
+        color: battery.level < 10 ? root.colRed : battery.level < 25 ? root.colYellow : root.colGreen
+
+        Behavior on width {
+          NumberAnimation {
+            duration: 400
+            easing.type: Easing.OutCubic
+          }
+        }
       }
     }
   }

@@ -9,7 +9,7 @@ Rectangle {
 
   width: 42
   height: tray.height + 16
-  color: root.colBFBg
+  color: root.colDarkestGrey
   radius: width / 2
 
 

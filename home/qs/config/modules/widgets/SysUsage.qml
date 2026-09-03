@@ -12,7 +12,7 @@ Rectangle {
 
   width: 42
   height: sysUsage.height + 16
-  color: root.colBFBg
+  color: root.colDarkestGrey
   radius: width / 2
 
   ColumnLayout {
@@ -21,40 +21,17 @@ Rectangle {
     id: sysUsage
     anchors.centerIn: parent
 
-    Rectangle {
-      height: 30
-      width: 30
-      color: root.colBFBg
-      radius: width / 2
-
-      CPU {
-        anchors.centerIn: parent
-        Layout.alignment: Qt.AlignHCenter
-      }
+    CPU {
+      Layout.alignment: Qt.AlignHCenter
     }
 
-    Rectangle {
-      height: 30
-      width: 30
-      color: root.colFBg
-      radius: width / 2
-
-      Memory {
-        anchors.centerIn: parent
-        Layout.alignment: Qt.AlignHCenter
-      }
+    Memory {
+      Layout.alignment: Qt.AlignHCenter
     }
 
-    Rectangle {
-      height: 30
-      width: 30
-      color: root.colFBg
-      radius: width / 2
-
-      GPU {
-        anchors.centerIn: parent
-        Layout.alignment: Qt.AlignHCenter
-      }
+    GPU {
+      Layout.alignment: Qt.AlignHCenter
+      visible: hasGpu
     }
   }
 

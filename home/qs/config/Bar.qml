@@ -22,7 +22,7 @@ Variants {
       bottom: true
     }
   
-    color: root.colBFBg
+    color: root.colDarkestGrey
   
     ColumnLayout {
       Layout.alignment: Qt.AlignHCenter

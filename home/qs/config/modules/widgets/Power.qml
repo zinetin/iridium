@@ -5,7 +5,7 @@ import QtQuick.Layouts
 Rectangle {
   width: 30
   height: 30
-  color: root.colFBg
+  color: root.colGrey
   radius:  width/2
 
   Text {
