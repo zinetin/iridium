@@ -12,7 +12,7 @@ ShellRoot {
   property color colDarkGrey: "#212330"
   property color colGrey: "#272834"
   property color colLightGrey: "#444b6a"
-  property color colLightestGrey: "#a9b1d6"
+  property color colLightestGrey: "#a9b1b6"
   property color colCyan: "#66ffff"
   property color colBlue: "#7aa2f7"
   property color colYellow: "#e1e368"
