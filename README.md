@@ -1,3 +1,6 @@
+# NOTICE ABOUT WALLPAPERS
+Included in this repository are some wallpapers. If you are the creator of any of these wallpapers and wish them to be removed from the repository please tell me and I am happy to do so.
+
 # iridium
 A Hyprland and Quickshell configuration made for NixOS focused on usability.
 You should be able to install this via Nix on non NixOS systems
