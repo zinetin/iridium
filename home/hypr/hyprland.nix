@@ -1,5 +1,5 @@
 {config, pkgs, inputs, lib, ...}:
-
+with lib;
 let
   cfg = config.programs.iridium;
 in 
