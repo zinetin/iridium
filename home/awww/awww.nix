@@ -35,13 +35,5 @@ in
 
     home.file.".wallpapers".source = cfg.wallpaperDir;
 
-    wayland.windowManager.hyprland.settings.exec-once = [
-      "${pkgs.awww}/bin/awww-daemon"
-      "sleep 1 && ${pkgs.awww}/bin/awww img ${
-        if cfg.wallpaper != null
-        then "${cfg.wallpaperDir}/${cfg.wallpaper}"
-        else "$(find ${cfg.wallpaperDir} -type f | shuf -n1)"
-      }"
-    ];
   };
 }
