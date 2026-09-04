@@ -62,10 +62,20 @@ For this step note that modules/qs/config/* should be copied to ~/.config/quicks
 
 ## Configuration
 
-Only one configuration option is currently available
-
 ```home.nix
 programs.iridium.additionalHyprConfig
 ```
 
 This takes a path to a hyprland lua file that will be added to the hyprland config (is written to .config/custom/hyprland.lua)
+
+```home.nix
+programs.iridium.wallpaperDir
+```
+
+Directory containing wallpaper images. Override this to point at your own wallpaper directory instead of the ones bundled with this flake, e.g.: programs.iridium.wallpaperDir = /home/you/Pictures/wallpapers;
+
+```home.nix
+programs.iridium.wallpaper
+```
+
+Specific filename (relative to wallpaperDir) to set on login. Null = pick randomly.

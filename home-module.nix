@@ -11,12 +11,5 @@ in
   ];
   options.programs.iridium = {
     enable = mkEnableOption "Hyprland + Quickshell config";
-
-    additionalHyprConfig = mkOption {
-      type = types.nullOr types.path;
-      default = null;
-      description = "Optional path to an additional lua file that contains your configuration";
-      example = literalExpression "./custom.lua";
-    };
   };
 }

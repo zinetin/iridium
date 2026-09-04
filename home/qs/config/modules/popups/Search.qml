@@ -81,8 +81,8 @@ PanelWindow {
     width: 480
     height: 420
     radius: 16
-    color: root.colBFBg
-    border.color: root.colMuted
+    color: root.colDarkestGrey
+    border.color: root.colLightestGrey
     border.width: 1
 
     // absorb clicks so they don't fall through to the catcher above
@@ -102,7 +102,7 @@ PanelWindow {
         Layout.fillWidth: true
         placeholderText: "Search apps…"
         color: root.colWhite
-        placeholderTextColor: root.colMuted
+        placeholderTextColor: root.colLightestGrey
         selectByMouse: true
 
         font {
@@ -111,7 +111,7 @@ PanelWindow {
         }
 
         background: Rectangle {
-          color: root.colFBg
+          color: root.colGrey
           radius: 10
         }
 
@@ -142,7 +142,7 @@ PanelWindow {
           width: appList.width
           height: 44
           radius: 8
-          color: index === appList.currentIndex ? root.colFBg : "transparent"
+          color: index === appList.currentIndex ? root.colGrey : "transparent"
 
           RowLayout {
             anchors.fill: parent
@@ -175,7 +175,7 @@ PanelWindow {
               Text {
                 visible: !!modelData.comment
                 text: modelData.comment
-                color: root.colMuted
+                color: root.colLightestGrey
                 elide: Text.ElideRight
                 Layout.fillWidth: true
                 font {
