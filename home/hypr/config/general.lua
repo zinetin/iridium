@@ -30,7 +30,6 @@ hl.config({
       disable_while_typing = false,
     },
     numlock_by_default = true,
-    kb_options = "caps:swapescape"
   }
 })
 
