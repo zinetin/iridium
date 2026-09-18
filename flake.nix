@@ -17,7 +17,7 @@
     nixosModules.default = import ./root/root.nix;
 
     homeModules.default = { pkgs, ... }: {
-      import [ ./home-module.nix ];
+      import = [ ./home-module.nix ];
       _module.args.wallpapersSrc = wallpapers.packages.${pkgs.system}.default;
     };
 
