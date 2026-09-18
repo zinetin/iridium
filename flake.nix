@@ -18,7 +18,7 @@
 
     homeModules.default = { pkgs, ... }: {
       imports = [ ./home-module.nix ];
-      _module.args.wallpapersSrc = wallpapers.packages.${pkgs.system}.default;
+      _module.args.wallpapersSrc = wallpapers.packages.${pkgs.stdenv.hostPlatform.system}.default;
     };
 
 
