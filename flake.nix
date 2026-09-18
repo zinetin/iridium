@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    wallpapers.url = "github:zinetin/wallpapers";
   };
 
-  outputs = { self, nixpkgs, ... }:
+  outputs = { self, nixpkgs, wallpapers, ... }:
   let
     forAllSystems = nixpkgs.lib.genAttrs [
       "x86_64-linux"
@@ -15,7 +16,11 @@
   {
     nixosModules.default = import ./root/root.nix;
 
-    homeModules.default = import ./home-module.nix;
+    homeModules.default = { pkgs, ... }: {
+      import [ ./home-module.nix ];
+      _module.args.wallpapersSrc = wallpapers.packages.${pkgs.system}.default;
+    };
+
 
   #  packages = forAllSystems (system:
   #    let pkgs = nixpkgs.legacyPackages.${system};

@@ -1,4 +1,4 @@
-{config, pkgs, lib, ...}:
+{config, pkgs, lib, wallpapersSrc, ...}:
 with lib;
 let
   cfg = config.programs.iridium;
@@ -7,7 +7,7 @@ in
   options.programs.iridium = {
     wallpaperDir = mkOption {
       type = types.path;
-      default = ./wallpapers;
+      default = wallpapersSrc;
       defaultText = literalExpression "./wallpapers (bundled with the flake)";
       description = ''
         Directory containing wallpaper images.
@@ -28,9 +28,15 @@ in
     home.packages = [
       pkgs.awww
       pkgs.findutils
-      (pkgs.writeShellScriptBin "wallpaper-random" ''
-        exec ${pkgs.awww}/bin/awww img "$(find ~/.wallpapers -type f | shuf -n1)" --transition-type wipe
-      '')
+      (pkgs.writeShellScriptBin "wallpaper-set" ''
+       set -eu
+       if [ -n "''${1:-}" ]; then
+       img="${cfg.wallpaperDir}/$1"
+       else
+       img="$(find ${cfg.wallpaperDir} -type f | shuf -n1)"
+       fi
+       exec ${pkgs.awww}/bin/awww img "$img" --transition-type "''${AWWW_TRANSITION_TYPE:-wipe}" --transition-step "''${AWWW_TRANSITION_STEP:-200}" --transition-duration "''${AWWW_TRANSITION_DURATION:-0.5}"
+       '')
     ];
 
     home.file.".wallpapers".source = cfg.wallpaperDir;

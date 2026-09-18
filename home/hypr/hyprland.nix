@@ -57,7 +57,7 @@ in
         -- Some startup things here because its easier than putting it into its own file
         hl.on("hyprland.start", function()
           hl.exec_cmd("${pkgs.awww}/bin/awww-daemon")
-          hl.exec_cmd('sleep 1 && ${pkgs.awww}/bin/awww img ${if cfg.wallpaper != null then "${cfg.wallpaperDir}/${cfg.wallpaper}" else "$(find ${cfg.wallpaperDir} -type f | shuf -n1)"}')
+          hl.exec_cmd('sleep 1 && wallpaper-random"}')
         end)
       '';
     };
