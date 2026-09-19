@@ -27,12 +27,15 @@ Rectangle {
         Layout.alignment: Qt.AlignHCenter
         width: 30
         height: 30
-        radius: width / 2
+        radius: 5
+
 
         property var ws: modelData
         property bool isActive: Hyprland.focusedWorkspace?.id === ws.id
 
-        color: isActive ? root.colLightestGrey : root.colGrey
+        color: isActive ? root.colLightestGrey : root.colDarkestGrey
+        border.width: 2
+        border.color: isActive ? root.colLightestGrey : root.colLightGrey
 
         Text {
           anchors.centerIn: parent
