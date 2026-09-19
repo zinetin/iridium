@@ -89,10 +89,56 @@ PanelWindow {
       onClicked: {}
     }
 
+    // Calculator
+    Process {
+      id: qalcProc
+      stdout: StdioCollector {
+        onStreamFinished: card.qalcResult = this.text.trim()
+      }
+      // if the text changed while qalc was running, run again with the latest
+      onRunningChanged: if (!running && searchInput.text !== lastQuery) runQalc()
+    }
+
+    property string lastQuery: ""
+
+    function runQalc() {
+      if (qalcProc.running) return
+      lastQuery = searchInput.text
+      if (lastQuery.trim() === "") {
+        qalcResult = ""
+        return
+      }
+      qalcProc.command = ["qalc", "-t", lastQuery]   // -t = terse output
+      qalcProc.running = true
+    }
+
+    Timer {
+      id: qalcDebounce
+      interval: 100
+      onTriggered: card.runQalc()
+    }
+
     ColumnLayout {
       anchors.fill: parent
       anchors.margins: 14
       spacing: 10
+
+      Rectangle {
+        Layout.fillWidth: true
+        height: 25
+        color: root.colGrey
+        radius: 5
+
+        Text{
+          anchors.left: parent.left
+          anchors.verticalCenter: parent.verticalCenter
+          anchors.leftMargin: 3
+          font.family: root.fontFamily
+          font.pixelSize: root.fontSize
+          color: root.colWhite
+          text: card.qalcResult !== "" ? card.qalcResult : "Qalc output"
+        }
+      }
 
       TextField {
         id: searchInput
@@ -113,6 +159,8 @@ PanelWindow {
           radius: 5
         }
 
+        onTextChanged: qalcDebounce.restart()
+
         Keys.onEscapePressed: launcher.launcherOpen = false
         Keys.onDownPressed: appList.incrementCurrentIndex()
         Keys.onUpPressed: appList.decrementCurrentIndex()
@@ -120,6 +168,9 @@ PanelWindow {
           const entry = launcher.filteredApps[appList.currentIndex]
           if (entry) launcher.launch(entry)
         }
+
+
+        
       }
 
       ListView {
@@ -189,6 +240,21 @@ PanelWindow {
             hoverEnabled: true
             onEntered: appList.currentIndex = index
             onClicked: launcher.launch(modelData)
+          }
+        }
+      }
+      Rectangle {
+        Layout.fillWidth: true
+        height: 40
+        RowLayout {
+          anchors.fill: parent
+          Rectangle {
+            width: 30
+            height: 30
+
+            Text {
+              text: "⏻"
+            }
           }
         }
       }

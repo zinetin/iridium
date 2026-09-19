@@ -12,6 +12,7 @@ in
 
     home.packages = with pkgs; [
       quickshell
+      libqalculate
     ];
 
     xdg.configFile."quickshell" = {
