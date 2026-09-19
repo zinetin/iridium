@@ -1,1 +1,63 @@
-/nix/store/169p3fg0a5ij49nkw2sy9kb8cfhrr12w-home-manager-files/.config/quickshell/modules/widgets/Workspaces.qml
+import Quickshell
+import Quickshell.Hyprland
+import QtQuick
+import QtQuick.Layouts
+
+Rectangle {
+
+  height: workspaces.height
+  color: root.colBFBg
+
+  ColumnLayout {
+    id: workspaces
+
+    anchors.centerIn: parent
+
+    spacing: 8
+
+    Repeater {
+
+      model: {
+        let workspaces = Hyprland.workspaces.values;
+        return [...workspaces].sort((a, b) => a.id - b.id);
+      }
+
+      Rectangle {
+
+        Layout.alignment: Qt.AlignHCenter
+        width: 30
+        height: 30
+        radius: 5
+
+
+        property var ws: modelData
+        property bool isActive: Hyprland.focusedWorkspace?.id === ws.id
+
+        color: isActive ? root.colLightestGrey : root.colDarkestGrey
+        border.width: 2
+        border.color: isActive ? root.colLightestGrey : root.colLightGrey
+
+        Text {
+          anchors.centerIn: parent
+
+          
+          Layout.alignment: Qt.AlignHCenter
+
+          text: ws.name.startsWith("special: ") ? ws.name.replace("special: ", "s") : ws.id
+          color: isActive ? root.colBlack : root.colLightestGrey
+
+          font {
+            pixelSize: root.fontSize
+            bold: true
+            family: root.fontFamily
+          }
+
+        }
+        MouseArea {
+          anchors.fill: parent
+          onClicked: Hyprland.dispatch("hl.dsp.focus({ workspace = " + ws.id + "})")
+        }
+      }
+    }
+  }
+}

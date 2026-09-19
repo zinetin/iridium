@@ -1,1 +1,11 @@
-/nix/store/169p3fg0a5ij49nkw2sy9kb8cfhrr12w-home-manager-files/.config/quickshell/modules/widgets/OtherTrayBits.qml
+import Quickshell
+import Quickshell.Io
+import QtQuick
+import QtQuick.Layouts
+
+ColumnLayout {
+  Battery {
+    anchors.centerIn: parent
+    Layout.alignment: Qt.AlignHCenter
+  }
+}
