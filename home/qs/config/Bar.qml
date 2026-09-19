@@ -9,6 +9,7 @@ Variants {
   model: Quickshell.screens
 
   PanelWindow {
+
     id: rootbar
 
     required property var modelData
@@ -22,48 +23,65 @@ Variants {
       bottom: true
     }
   
-    color: root.colDarkestGrey
-  
-    ColumnLayout {
-      Layout.alignment: Qt.AlignHCenter
+    color: "transparent"
+
+    Rectangle {
+
       anchors.fill: parent
-      anchors.topMargin: 8
-      anchors.bottomMargin: 8
+      color: root.colDarkestGrey
 
-      Workspaces {
+//      Rectangle {
+//        anchors {
+//          top: parent.top
+//          bottom: parent.bottom
+//          right: parent.right
+//        }
+//        width: 2
+//        color: root.colLightestGrey
+//      }
+
+
+      ColumnLayout {
         Layout.alignment: Qt.AlignHCenter
-      }
+        anchors.fill: parent
+        anchors.topMargin: 8
+        anchors.bottomMargin: 8
 
-      Item { 
-        Layout.fillHeight: true
-        Layout.minimumHeight: 0
-      }
+        Workspaces {
+          Layout.alignment: Qt.AlignHCenter
+        }
 
-      BiggerSidebarButton {
-        Layout.alignment: Qt.AlignHCenter
-      }
+        Item { 
+          Layout.fillHeight: true
+          Layout.minimumHeight: 0
+        }
 
-      Item { 
-        Layout.fillHeight: true
-        Layout.preferredHeight: 300
-        Layout.maximumHeight: 300
-        Layout.minimumHeight: 0
-      }
+        BiggerSidebarButton {
+          Layout.alignment: Qt.AlignHCenter
+        }
 
-      SysUsage {
-        Layout.alignment: Qt.AlignHCenter
-      } 
+        Item { 
+          Layout.fillHeight: true
+          Layout.preferredHeight: 300
+          Layout.maximumHeight: 300
+          Layout.minimumHeight: 0
+        }
 
-      Clock {
-        Layout.alignment: Qt.AlignHCenter
-      }
+        SysUsage {
+          Layout.alignment: Qt.AlignHCenter
+        } 
 
-      Tray {
-        Layout.alignment: Qt.AlignHCenter
-      }
+        Clock {
+          Layout.alignment: Qt.AlignHCenter
+        }
 
-      Power {
-        Layout.alignment: Qt.AlignHCenter
+        Tray {
+          Layout.alignment: Qt.AlignHCenter
+        }
+
+        Power {
+          Layout.alignment: Qt.AlignHCenter
+        }
       }
     }
   }

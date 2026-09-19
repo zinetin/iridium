@@ -80,10 +80,8 @@ PanelWindow {
     anchors.centerIn: parent
     width: 480
     height: 420
-    radius: 16
+    radius: 5
     color: root.colDarkestGrey
-    border.color: root.colLightestGrey
-    border.width: 1
 
     // absorb clicks so they don't fall through to the catcher above
     MouseArea {
@@ -112,7 +110,7 @@ PanelWindow {
 
         background: Rectangle {
           color: root.colGrey
-          radius: 10
+          radius: 5
         }
 
         Keys.onEscapePressed: launcher.launcherOpen = false
