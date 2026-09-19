@@ -1,10 +1,1 @@
-import QtQuick
-import QtQuick.Layouts
-import QtQuick.Controls
-import Quickshell
-import Quickshell.Wayland
-import Quickshell.Widgets
-
-PanelWindow {
-  id: Launcher
-}
+/nix/store/169p3fg0a5ij49nkw2sy9kb8cfhrr12w-home-manager-files/.config/quickshell/Launcher.qml

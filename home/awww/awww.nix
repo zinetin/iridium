@@ -29,13 +29,17 @@ in
       pkgs.awww
       pkgs.findutils
       (pkgs.writeShellScriptBin "wallpaper-set" ''
-       set -eu
-       if [ -n "''${1:-}" ]; then
-       img="${cfg.wallpaperDir}/$1"
-       else
-       img="$(find ${cfg.wallpaperDir} -type f | shuf -n1)"
-       fi
-       exec ${pkgs.awww}/bin/awww img "$img" --transition-type "''${AWWW_TRANSITION_TYPE:-wipe}" --transition-step "''${AWWW_TRANSITION_STEP:-200}" --transition-duration "''${AWWW_TRANSITION_DURATION:-0.5}"
+        set -eu
+        if [ -n "''${1:-}" ]; then
+        img="${cfg.wallpaperDir}/$1"
+        else
+        img="$(find ${cfg.wallpaperDir} -type f | shuf -n1)"
+        fi
+        exec ${pkgs.awww}/bin/awww img "$img" --transition-type "''${AWWW_TRANSITION_TYPE:-wipe}" --transition-step "''${AWWW_TRANSITION_STEP:-200}" --transition-duration "''${AWWW_TRANSITION_DURATION:-0.5}"
+       '')
+      (pkgs.writeShellScriptBin "wallpaper-tree" ''
+        set -eu
+        ${pkgs.tree}/bin/tree ${lib.escapeShellArg cfg.wallpaperDir}
        '')
     ];
 

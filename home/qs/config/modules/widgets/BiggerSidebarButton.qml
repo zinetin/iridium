@@ -1,14 +1,1 @@
-import Quickshell
-import QtQuick
-import QtQuick.Layouts
-
-Text {
-  Layout.alignment: Qt.AlignHCenter
-  text: " "
-  color: root.colWhite
-    font {
-    family: root.fontFamily
-    pixelSize: root.fontSize
-    bold: true
-  }
-}
+/nix/store/169p3fg0a5ij49nkw2sy9kb8cfhrr12w-home-manager-files/.config/quickshell/modules/widgets/BiggerSidebarButton.qml
