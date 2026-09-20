@@ -11,7 +11,8 @@ You should be able to install this via Nix on non NixOS systems
 This flake assumes that both the .config/hypr and .config/quickshell directories are empty.
 It is untested as to what happens if the directories are not empty, but it could lead to a loss of configuration.
 
-## Installation
+## Installation on NixOS
+(For all other systems see manual installation below)
 
 1. Add iridium to your flake.nix inputs
 
@@ -56,12 +57,14 @@ programs.iridium = {
 
 ## Manual Installtion
 
-1. Install Hyprland and Quickshell (I will try to keep this up to date as I add more packages, or try to move all packages to their own file)
+1. Install Hyprland and Quickshell (I will try to keep this up to date as I add more packages, however if something isn't working you can look through all of the .nix files for the package lists and the program.enables)
 
 2. Clone the repository.
 
 3. Copy the contents of the config folders. (e.g., copy modules/hyprland/config/* to ~/.config/hypr/)
-For this step note that modules/qs/config/* should be copied to ~/.config/quickshell/
+For this step note that modules/qs/config/* should be copied to ~/.config/quickshell/default
+
+4. Optionally install libcalculate, grimbladt and satty.
 
 ## Configuration
 
