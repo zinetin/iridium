@@ -13,6 +13,7 @@ in
     home.packages = with pkgs; [
       quickshell
       libqalculate
+      wl-copy
     ];
 
     xdg.configFile."quickshell" = {

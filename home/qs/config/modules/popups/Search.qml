@@ -9,7 +9,11 @@ import QtQuick.Controls
 PanelWindow {
   id: launcher
 
+  readonly property var modes: ["apps", "qalc"]
+  property string mode: modes[0]
+
   property bool launcherOpen: false
+
   property var filteredApps: {
     const q = searchInput.text.trim().toLowerCase()
     const all = [...DesktopEntries.applications.values]
@@ -21,7 +25,7 @@ PanelWindow {
     return all.filter(d => {
       const name = (d.name || "").toLowerCase()
       const comment = (d.comment || "").toLowerCase()
-      return name.includes(q) || comment.includes(q)
+      return name.includes(q)
     })
   }
 
@@ -63,6 +67,12 @@ PanelWindow {
     }
   }
 
+  onModeChanged: {
+    if (mode === "qalc") {
+      card.runQalc()
+    }
+  }
+
   function launch(entry) {
     entry.execute()
     launcherOpen = false
@@ -89,6 +99,9 @@ PanelWindow {
       onClicked: {}
     }
 
+    property string qalcResult: ""
+    property string lastQuery: ""
+
     // Calculator
     Process {
       id: qalcProc
@@ -96,12 +109,14 @@ PanelWindow {
         onStreamFinished: card.qalcResult = this.text.trim()
       }
       // if the text changed while qalc was running, run again with the latest
-      onRunningChanged: if (!running && searchInput.text !== lastQuery) runQalc()
+      onRunningChanged: if (!running && searchInput.text !== card.lastQuery) card.runQalc()
     }
 
-    property string lastQuery: ""
-
     function runQalc() {
+      if (launcher.mode !== "qalc") {
+        qalcResult = ""
+        return
+      }
       if (qalcProc.running) return
       lastQuery = searchInput.text
       if (lastQuery.trim() === "") {
@@ -118,6 +133,11 @@ PanelWindow {
       onTriggered: card.runQalc()
     }
 
+    Process {
+      id: copyQalcProc
+      command: ["wl-copy", card.qalcResult]
+    }
+
     ColumnLayout {
       anchors.fill: parent
       anchors.margins: 14
@@ -126,6 +146,7 @@ PanelWindow {
       Rectangle {
         Layout.fillWidth: true
         height: 25
+        visible: launcher.mode === "qalc"
         color: root.colGrey
         radius: 5
 
@@ -144,7 +165,7 @@ PanelWindow {
         id: searchInput
 
         Layout.fillWidth: true
-        placeholderText: "Search apps…"
+        placeholderText: launcher.mode === "qalc" ? "Enter expression… (Tab for apps)" : "Search apps… (Tab for calc)"
         color: root.colWhite
         placeholderTextColor: root.colLightestGrey
         selectByMouse: true
@@ -159,18 +180,40 @@ PanelWindow {
           radius: 5
         }
 
-        onTextChanged: qalcDebounce.restart()
-
-        Keys.onEscapePressed: launcher.launcherOpen = false
-        Keys.onDownPressed: appList.incrementCurrentIndex()
-        Keys.onUpPressed: appList.decrementCurrentIndex()
-        Keys.onReturnPressed: {
-          const entry = launcher.filteredApps[appList.currentIndex]
-          if (entry) launcher.launch(entry)
+        onTextChanged: {
+          if (launcher.mode === "qalc") qalcDebounce.restart()
         }
 
+        Keys.onEscapePressed: launcher.launcherOpen = false
 
-        
+        Keys.onTabPressed: (event) => {
+          const modes = launcher.modes
+          const i = launcher.modes.indexOf(launcher.mode)
+          const dir = (event.modifiers & Qt.ShiftModifier) ? -1 : 1
+          launcher.mode = launcher.modes[(i + dir + modes.length) % modes.length]
+          event.accepted = true
+        }
+
+        Keys.onDownPressed: {
+          if (launcher.mode === "apps") appList.incrementCurrentIndex()
+        }
+
+        Keys.onUpPressed: {
+          if (launcher.mode === "apps") appList.decrementCurrentIndex()
+        }
+
+        Keys.onReturnPressed: {
+          if (launcher.mode === "apps") {
+            const entry = launcher.filteredApps[appList.currentIndex]
+            if (entry) launcher.launch(entry)
+          } else if (launcher.mode === "qalc") {
+            if (card.qalcResult != "") {
+              copyQalcProc.command = ["wl-copy", card.qalcResult]
+              copyQalcProc.running = true
+              launcher.launcherOpen = false
+            }
+          }
+        }
       }
 
       ListView {
@@ -178,6 +221,7 @@ PanelWindow {
 
         Layout.fillWidth: true
         Layout.fillHeight: true
+        visible: launcher.mode === "apps"
         clip: true
         spacing: 4
         model: launcher.filteredApps
