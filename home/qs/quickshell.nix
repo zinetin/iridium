@@ -7,7 +7,10 @@ in
   config = lib.mkIf cfg.enable {
     programs.quickshell = {
       enable = true;
-      systemd.enable = true;
+      systemd = {
+        enable = true;
+        target = "hyprland-session.target";
+      };
     };
 
     home.packages = with pkgs; [
